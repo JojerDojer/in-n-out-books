@@ -1,0 +1,24 @@
+<ng-container *ngIf="books.length === 0">
+  <mat-spinner></mat-spinner>
+</ng-container>
+
+<div *ngIf="books.length > 0">
+  <h2 class="green">Top {{books.length}} Favorite Books</h2>
+  <div class="grid-container">
+    <ng-container *ngFor="let book of books">
+      <mat-card class="grid-container__item mat-elevation-z8">
+        <mat-card-title>
+          <a class="grid-container__ahref blue" (click)="showBookDetails(book.isbn)">{{book.title}}</a>
+        </mat-card-title>
+        <mat-card-content>
+          <mat-list>
+            <!-- Mapping book properties to the respective list-items. -->
+            <mat-list-item>ISBN: {{book.isbn}}</mat-list-item>
+            <mat-list-item>Pages: {{book.numOfPages}}</mat-list-item>
+            <mat-list-item>Authors: {{book.authors.join(',')}}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>
